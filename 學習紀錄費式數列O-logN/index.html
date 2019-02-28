@@ -17,7 +17,7 @@
   
   
     <meta name="description" content="費式數列$O(logN)$解法(使用python)前言一般面對費式數列的題目時，最直觀的想法就是使用遞迴，複雜度$O(2^n)$12345def fibo_recursive(num):	if num &lt; 2:		return num	else:		return fibo_recursive(num-1) + fibo_recursive(num-2)
-這東西光num=20就跑得有點久...">
+這東西光num=40就跑得有點久...">
   
   <title>費式數列O(logN) [ ICEJJ's BLOG ]</title>
   
@@ -37,6 +37,15 @@
 
 <body>
 <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/手遊-FGO海媽讚讚讚/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        海媽讚讚讚
+      </div>
+    </div>
   
   
     <div class="item next">
@@ -149,7 +158,7 @@
     <p class="page-title-sub">
       <span id = "post-title-date">Created at 2019-02-23</span>
       
-        <span id = "post-title-updated">Updated at 2019-02-26</span>
+        <span id = "post-title-updated">Updated at 2019-02-28</span>
       
       
       <span id = "post-title-categories">Category
@@ -175,7 +184,7 @@
     </p>
     
     <h2 id="費式數列-O-logN-解法-使用python"><a href="#費式數列-O-logN-解法-使用python" class="headerlink" title="費式數列$O(logN)$解法(使用python)"></a>費式數列$O(logN)$解法(使用python)</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一般面對費式數列的題目時，最直觀的想法就是使用遞迴，複雜度$O(2^n)$<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibo_recursive</span><span class="params">(num)</span>:</span></span><br><span class="line">	<span class="keyword">if</span> num &lt; <span class="number">2</span>:</span><br><span class="line">		<span class="keyword">return</span> num</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> fibo_recursive(num<span class="number">-1</span>) + fibo_recursive(num<span class="number">-2</span>)</span><br></pre></td></tr></table></figure></p>
-<p>這東西光<code>num=20</code>就跑得有點久了，於是有一種$O(N)$的解法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibo_for_loop</span><span class="params">(num)</span>:</span></span><br><span class="line">	a = <span class="number">0</span></span><br><span class="line">	b = <span class="number">1</span></span><br><span class="line">	<span class="keyword">if</span> num &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> num</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">	    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">1</span>, num):</span><br><span class="line">		    temp = b</span><br><span class="line">		    b = a + b</span><br><span class="line">		    a = temp</span><br><span class="line">	<span class="keyword">return</span> b</span><br></pre></td></tr></table></figure></p>
+<p>這東西光<code>num=40</code>就跑得有點久了，於是有一種$O(N)$的解法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibo_for_loop</span><span class="params">(num)</span>:</span></span><br><span class="line">	a = <span class="number">0</span></span><br><span class="line">	b = <span class="number">1</span></span><br><span class="line">	<span class="keyword">if</span> num &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> num</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">	    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">1</span>, num):</span><br><span class="line">		    temp = b</span><br><span class="line">		    b = a + b</span><br><span class="line">		    a = temp</span><br><span class="line">	<span class="keyword">return</span> b</span><br></pre></td></tr></table></figure></p>
 <p>這方法已經滿快了但是…<br><img src="https://cdn-images-1.medium.com/max/1200/1*An4Dc-BzSj8_YAhr_fyxuQ.jpeg" alt=""><br>以下就來推導$O(logN)$</p>
 <h3 id="推導"><a href="#推導" class="headerlink" title="推導"></a>推導</h3><p>我們都知道費式數列的規則:</p>
 <script type="math/tex; mode=display">
@@ -520,6 +529,8 @@ PD^{N-1}P^{-1}*
 
   
 <nav id="pagination">
+  
+    <a href="/手遊-FGO海媽讚讚讚/" class="prev">&larr; Prev post 海媽讚讚讚</a>
   
 
   
