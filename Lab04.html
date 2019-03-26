@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab04</title>
+	<meta charset="utf-8">
+
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
+
+
+	<style type="text/css">
+		
+		* {	
+			font-family: Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif !important;
+		}
+
+		#search {
+			background-color: rgba(255, 255, 255, 0);
+			height: 10%;
+			margin-top: 4%;
+			width: 70%;
+			font-size: 1em;
+			color: #FFF;
+			min-height: 20px;
+			padding: 5px;
+			cursor: text;
+			border: 1px rgba(255, 255, 255, 0.5)solid;
+		}
+		#search::-webkit-input-placeholder{
+			color:#999;
+		}
+		.clear_search {
+			margin-left: -20px;
+			color: #8B8B8B;
+			cursor: pointer;
+		}
+
+		body{
+			
+			margin: 0;
+			padding: 0;
+			overflow-x: auto;
+			overflow-y: hidden;
+		}
+
+		bg{
+
+			background-image: url("https://i.imgur.com/yOss8Cy.jpg");
+			background-size: cover;
+			background-attachment: fixed;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -10;
+		}
+
+		bg mask {
+
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-color: rgba(0, 0, 0, 0.2);
+		}
+
+		img{
+
+			max-height: 157px; 
+			max-width: auto;
+			display: block;
+			float: left; 
+		}
+
+		.modern .sub .title {
+			font-size: 24px;
+		}
+
+		.modern .sub p {
+			margin: 0.5% 0;
+		}
+
+		.main{
+
+			height: 650px;
+			position: absolute;
+			top: 5%;
+			left: 3%;
+			margin-top: -320
+			opacity: 0;
+			transition: top 0.3s, opacity 0.3s, width 0.3s, height 0.3s;
+			-webkit-transition: width 2s
+			white-space: nowrap;
+		}
+
+		.modern_main{
+
+			width: 1050px;
+			height: 100%;
+			display: inline-block;
+			vertical-align: top;
+			white-space: initial;
+		}
+
+		.modern{
+
+			background-color: rgba(0, 0, 0, 0.25);
+			display: inline-block;
+			position: relative;
+			-webkit-box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.4)inset;
+			margin: 0 6px 7px 0;
+			overflow: hidden;
+		}
+		.modern:hover {
+			margin-top: -3px;
+			margin-right: 3px;
+			margin-bottom: 4px;
+			margin-left: -3px;
+			border: 3px solid #000;
+		}
+
+		.modern.wa {
+			width: 93%;
+			padding: 0 3px;
+		}
+
+		.moderm.w{
+			width: 100%
+		}
+
+		.modern.w1{
+			width: 12.5%
+		}
+
+		.modern.w2{
+			width: 22%
+		}
+
+		.modern.w3{
+			width: 34%
+		}
+
+		.modern.w4{
+			width: 45%
+		}
+
+
+		.modern.h1 {
+			height: 24%;
+		}
+
+		.moderm.h2{
+			height: 0;
+			padding: 5px 6px 5px 5px;
+			position: absolute;
+			opacity: 0;
+		}
+
+		.vertical_middle_main {
+			width: 100%;
+			display: table;
+			height: 100%;
+		}
+		.vertical_middle_box {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		.modern.opacity {
+			opacity: 0;
+		}
+
+		.modern .sub {
+			width: 100%;
+			height: 100%;
+			color: #fff;
+			text-align: center;
+			cursor: default;
+			font-size: 18px;
+		}
+
+		.lSSlideOuter {
+		    position:relative;
+		    text-align:center;
+		}
+		.lSSlideOuter .lSPager.lSpg {
+		    position:fixed;
+		    left: 53%;
+		    bottom:43%;
+		    display:inline-block;
+		}
+
+	</style>
+
+</head>
+
+<script type="text/javascript">
+
+	function ya(event){
+
+		var k = event.keyCode;
+		if(k === 13){
+			alert("我只是裝飾用")
+		}
+	}
+
+	$(document).ready(function () {
+		$("#example").lightSlider({ 
+			// slideWidth: 300,
+			//gallery: true,
+			item: 1,
+			loop: true,
+			// speed: 200,
+			//thumbItem: 6,
+			slideMargin: 0,
+			pause: 2500,
+			auto: true
+		});
+
+	});
+</script>
+
+<body>
+
+	<bg></bg>
+	<div class="bg"></div>
+	<div class="main">
+		<div class="modern_main">
+			<div class="modern wa h1">
+				<div class="sub">
+					<div class="vertical_middle_main">
+						<div class="vertical_middle_box">
+							<div class="title">LAB04作業</div>
+							<p>在 Github personal page 上擴增 jQuery 功能</p>
+							<p></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modern w3 h1">
+				<div class="sub">
+					<div class="vertical_middle_main">
+						<div class="vertical_middle_box">
+							<p>裝飾用搜尋列</p>
+							<div>
+								<input type="text" id="search" placeholder="我是裝飾品" onkeypress="ya(event)">
+								<span class="clear_search" onclick="$('#search').val('');">x</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modern w2 h1">
+				<div class="sub">
+					<div class="vertical_middle_main">
+						<div class="vertical_middle_box" onclick="window.location='http://www.fju.edu.tw/;'" data-name="輔大網頁" data-href="http://www.fju.edu.tw/">
+							<div class="title">
+								輔大官網
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modern w2 h1">
+				<div class="sub">
+					<ul id="example">
+						<li><img src="https://i.imgur.com/P9R48tH.png" /></li>
+						<li><img src="https://i.imgur.com/OLOgRbO.jpg" /></li>
+						<li><img src="https://i.imgur.com/gFuH6OM.jpg" /></li>
+						<li><img src="https://i.imgur.com/JwfWTRA.jpg" /></li>
+						<li><img src="https://i.imgur.com/HeeGnAA.jpg" /></li>
+						<li><img src="https://i.imgur.com/iFdChKv.jpg" /></li>
+						<li><img src="https://i.imgur.com/gQE1YvV.jpg" /></li>
+						<li><img src="https://i.imgur.com/0t1Ts0t.jpg" /></li>
+						<li><img src="https://i.imgur.com/qUskEHZ.jpg" /></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="modern w1 h1">
+				<div class="sub">
+					<div class="vertical_middle_main">
+						<div class="vertical_middle_box" onclick="window.location='https://blog.kiyohime.tw';">
+							My Blog
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</body>
+</html>
